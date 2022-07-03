@@ -4,44 +4,19 @@
     $usuario = 'root';
     $senha = '';
 
-    echo 'opa, passei aqui';
-
     try{
 
         $conexao = new PDO($dsn, $usuario, $senha);
-        /*
-        $query = '
-            create table if not exists tb_usuarios(
-                id int not null primary key auto_increment,
-                nome varchar(50) not null,
-                email varchar(100) not null,
-                senha varchar(32) not null 
-            )
-        ';
+        $query = 'select * from tb_usuarios';
 
-        $retorno = $conexao->exec($query);
-        echo $retorno;
-        */
-        $query = '
-            insert into tb_usuarios(
-                nome, email, senha
-            ) values (
-                "Kauê Brenno",
-                "kauebrenno@gmail.com",
-                "senha123"
-            ), (
-                "João Barros",
-                "rabros@gmail.com",
-                "rabros123"
-            ), (
-                "JVictor Matheus",
-                "victor@gmail.com",
-                "victor123"
-            )     
-        ';
+        $statement = $conexao->query($query);
+        print_r($statement);
+        echo '<br>';
 
-        $retorno = $conexao->exec($query);
-        echo $retorno;
+        $lista = $statement->fetchAll();
+        echo '<pre>';
+            print_r($lista);
+        echo '</pre>';
 
     } catch (PDOException $erro) {
 
