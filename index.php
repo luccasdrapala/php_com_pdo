@@ -9,7 +9,7 @@
     try{
 
         $conexao = new PDO($dsn, $usuario, $senha);
-
+        /*
         $query = '
             create table if not exists tb_usuarios(
                 id int not null primary key auto_increment,
@@ -21,17 +21,23 @@
 
         $retorno = $conexao->exec($query);
         echo $retorno;
-
+        */
         $query = '
             insert into tb_usuarios(
-                nome,
-                email,
-                senha
+                nome, email, senha
             ) values (
-                "Luccas Drapala",
-                "luccasdrapala@gmail.com",
+                "Kauê Brenno",
+                "kauebrenno@gmail.com",
                 "senha123"
-            )    
+            ), (
+                "João Barros",
+                "rabros@gmail.com",
+                "rabros123"
+            ), (
+                "JVictor Matheus",
+                "victor@gmail.com",
+                "victor123"
+            )     
         ';
 
         $retorno = $conexao->exec($query);
