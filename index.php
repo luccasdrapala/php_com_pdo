@@ -7,16 +7,19 @@
     try{
 
         $conexao = new PDO($dsn, $usuario, $senha);
-        $query = 'select * from tb_usuarios';
+        $query = 'select * from tb_usuarios where id=6';
 
         $statement = $conexao->query($query);
         print_r($statement);
         echo '<br>';
 
-        $lista = $statement->fetchAll();
+        $lista = $statement->fetch(PDO::FETCH_OBJ);
         echo '<pre>';
             print_r($lista);
         echo '</pre>';
+        echo $lista->nome;
+
+        //echo $lista[0]->nome . ' - ' . $lista[0]->email;
 
     } catch (PDOException $erro) {
 
