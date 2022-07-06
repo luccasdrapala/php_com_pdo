@@ -9,6 +9,13 @@
         $conexao = new PDO($dsn, $usuario, $senha);
         $query = 'select * from tb_usuarios';
 
+        foreach($conexao->query($query) as $key => $value){
+            echo '<pre>';
+                print_r($value['nome']);
+            echo '</pre><hr>';
+        }
+
+        /*
         $statement = $conexao->query($query);
         print_r($statement);
         echo '<br>';
@@ -20,8 +27,6 @@
                 print_r($value->nome);
             echo '</pre><hr>';
         }
-
-        /*
         echo '<pre>';
             print_r($lista);
         echo '</pre>';
